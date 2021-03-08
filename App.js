@@ -1,20 +1,30 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import Header from './components/Header';
-import StartGameScreen from './screens/StartGameScreen';
+import 'react-native-gesture-handler';
+import { NavigationContainer } from "@react-navigation/native";
 
-export default function App() {
+
+        
+import {
+  View,
+  Text,
+  StyleSheet,
+} from "react-native";
+import Login from "./components/Login";
+import StartPage from "./screens/StartPage";
+import BottomNavigator from "./components/BottomNavigator";
+
+import { createStackNavigator } from '@react-navigation/stack';
+
+const Stack = createStackNavigator();
+
+function App() {
   return (
-    <View style={styles.screen}>
-     <Header title= " Guess a  Number"/>
-     <StartGameScreen/>
-    </View>
+    <NavigationContainer>
+    <Stack.Navigator>
+      <Stack.Screen name="Login" component={Login} />
+      <Stack.Screen name="BottomNavigator" component={BottomNavigator} />
+    </Stack.Navigator>
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  screen : {
-    flex: 1
-  }
-});
+export default App;
